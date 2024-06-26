@@ -1,0 +1,66 @@
+.card {
+    border: 2px solid red;
+    margin-top: 2%;
+    width: 45%;
+    border-radius: 20px;
+    overflow: hidden;
+    /* justify-content: center; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#Design {
+    height: auto;
+}
+
+.card1 {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.card form input {
+    width: 50%;
+    height: 4vh;
+    border-radius: 20px;
+    padding: 4%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card form {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+
+h2 {
+    /* justify-content: center; */
+    display: flex;
+    width: 100%;
+    background-color: antiquewhite;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    width: 30%;
+    height: 4vh;
+    border-radius: 10px;
+}
+p {
+    width: 70%;
+    background-color: aqua;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 3%;
+
+}
