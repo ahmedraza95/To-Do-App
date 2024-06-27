@@ -1,5 +1,6 @@
 let card = document.querySelectorAll(".card");
-
+let btn = document.querySelector(".button");
+let main = document.querySelector(".card1");
 
 let savedTasks = JSON.parse(localStorage.getItem("savedTasks"));
 
@@ -15,9 +16,15 @@ const addTask = (e) => {
     const value = currentForm.elements[0].value; // value written in form's input
     const parent = currentForm.parentElement; // parent of form i.e div.column
     const ticket = newElement(value);
+    if (!value) {
+        
+        return;
+    
+        } 
     parent.insertBefore(ticket, parent.secondChild)
     // parent.insertBefore(ticket, parent.firstChild); // adding new task before the form
-    const h3Value = parent.children[0].innerText;
+    console.log(value);
+           const h3Value = parent.children[0].innerText;
 
 
     currentForm.reset(); // clearing form
@@ -27,7 +34,6 @@ const addTask = (e) => {
     }
     savedTasks[h3Value].push(value);
     localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
-
 
     // console.log(savedTasks.Card1[1]);
 
@@ -47,3 +53,23 @@ let newElement = (value) => {
     ticket.appendChild(createText);
     return ticket
 }
+
+let createCard = () => {
+    const newCard = document.createElement("div");
+    newCard.setAttribute("class", "card")
+    const newHeading = document.createElement("h2");
+    const headingVAlue = document.createTextNode("Hello")
+
+    newHeading.appendChild(headingVAlue);
+    console.log(newHeading);
+    const newForm = document.createElement("form");
+    const newInput = document.createElement("input");
+    newInput.setAttribute("type","text");
+    newInput.setAttribute("placeholder","Add Task");
+    newForm.appendChild(newInput);
+    console.log(newForm);
+
+
+}
+
+// createCard()

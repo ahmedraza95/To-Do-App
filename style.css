@@ -1,7 +1,8 @@
+
 .card {
     border: 2px solid red;
     margin-top: 2%;
-    width: 45%;
+    width: 90%;
     border-radius: 20px;
     overflow: hidden;
     /* justify-content: center; */
@@ -15,8 +16,11 @@
 
 .card1 {
     display: flex;
-    width: 80%;
-    justify-content: space-around;
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: scroll;
 }
 
 .card form input {
@@ -62,5 +66,70 @@ p {
     align-items: center;
     border-radius: 10px;
     margin-bottom: 3%;
+    min-height: 4vh;
 
 }
+
+
+/* button add  */
+.button {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+    position: fixed;
+    top: 90%;
+  }
+  
+  .button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .button .button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .button:hover {
+    background: #34974d;
+  }
+  
+  .button:hover .button__text {
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button:active .button__icon {
+    background-color: #2e8644;
+  }
+  
+  .button:active {
+    border: 1px solid #2e8644;
+  }
+/* button add  */
