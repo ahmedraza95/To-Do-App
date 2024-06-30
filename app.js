@@ -78,7 +78,7 @@ let createCard = (value, valueTextArea) => {
     optionDiv.appendChild(newDiv1);
     optionDiv.appendChild(newDiv2);
     newCard.appendChild(optionDiv)
-    
+
 
 
     const para = document.createElement("p");
@@ -116,40 +116,54 @@ let createCard = (value, valueTextArea) => {
 
     UpdateDiv.addEventListener("click", (e) => {
         e.preventDefault();
+
         let getValue = e.target.parentElement.parentElement.parentElement.children[0];
+        let removeEle = e.target.parentElement.parentElement.parentElement.children[1];
+
         let textAreaValue = e.target.parentElement.parentElement.parentElement.parentElement.children[1];
         let addValue = e.target.parentElement.parentElement.parentElement.parentElement;
 
-
-
-        console.log(textAreaValue);
+        
+        
         let targetChildren = getValue.children[0];
-        console.log(targetChildren);
         targetChildren.remove();
-
+        
+        let form = document.createElement("form");
         let updateInput = document.createElement("input");
         updateInput.setAttribute("class", "styling")
-        updateInput.setAttribute("type","text")
+        updateInput.setAttribute("type", "text")
         updateInput.setAttribute("value", `${targetChildren.innerText}`);
-
+        form.appendChild(updateInput);
+        
+        
         let UpdateTextArea = document.createElement("textarea");
         let createValueTextArea = document.createTextNode(textAreaValue.innerText)
         UpdateTextArea.appendChild(createValueTextArea);
-
-
-        console.log(updateInput);
-        getValue.appendChild(updateInput);
+        
+        form.appendChild(UpdateTextArea);
+        
+        let submitBtn = document.createElement("button");
+        let buttonValue = document.createTextNode("Update Note");
+        submitBtn.setAttribute("class", "button1")
+        let br = document.createElement("br");
+        
+        form.appendChild(br)
+        submitBtn.setAttribute("type", "submit");
+        submitBtn.appendChild(buttonValue);
+        
+        form.appendChild(submitBtn);
         textAreaValue.remove();
-        addValue.appendChild(UpdateTextArea)
-
+        getValue.appendChild(form)
+        
         let updted1 = document.createElement("input");
         
+        removeEle.remove();
     })
 }
 for (const test in savedTasks) {
     let showValue = savedTasks[test][0];
     let showHeading = test;
-
+    
     createCard(showHeading, showValue);
-
+    
 }
