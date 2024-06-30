@@ -33,7 +33,7 @@ body {
   /* background-color: black; */
 }
 
-.card form input {
+.styling {
   width: 93%;
   height: 4vh;
   padding: 4%;
@@ -192,6 +192,24 @@ p {
   margin-top: 4%;
 }
 
+#Btn10 {
+  border: none;
+  background-color: transparent;
+}
+
+.btnEdit {
+  display: flex;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+
+}
+.options {
+  display: flex;
+  width: 10%;
+}
+
 .collapse {
   width: 90%;
   display: flex;
@@ -203,6 +221,22 @@ p {
   justify-content: center !important;
   width: 90%;
   height: 10vh;
+}
+
+.Option {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.optionUpadte {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 
