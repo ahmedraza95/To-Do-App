@@ -321,6 +321,31 @@ button:active {
 
 /* button  */
 
-.Dis {
-  color: gainsboro;
+.innerDiv {
+  width: 80%;
+  height: 4vh;
+  background-color: antiquewhite;
+  border: none;
+  outline: none;
+  padding: 4%;
+  border-radius: 5px;
+}
+
+.innerForm {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.button12 {
+  position: relative;
+  left: 85%;
+  height: 4vh;
+  border: none;
+  background-color: black;
+  color: antiquewhite;
+  border-radius: 10px;
+  top: -50%;
+  width: 30%;
 }
