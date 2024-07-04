@@ -1,7 +1,8 @@
 let card = document.querySelectorAll(".card");
 let btn = document.querySelector(".button");
-let main = document.querySelector(".card1");
+let main = document.querySelector(".add");
 let form = document.querySelector(".form");
+let woElementJoUthaHuaHy = null;
 
 
 console.log("he");
@@ -10,7 +11,6 @@ let savedTasks = JSON.parse(localStorage.getItem("savedTasks"));
 if (!savedTasks) {
     savedTasks = {};
 }
-
 
 
 const addTask = (e) => {
@@ -34,30 +34,23 @@ form.addEventListener("submit", addTask);
 
 
 
-let createTicket = (e) => {
-    e.preventDefault();
-    let targetDiv = e.target.parentElement.parentElement;
-    let targetinput = e.target.parentElement.children[0];
+let createTicket = (valuee) => {
     let newPara = document.createElement("p")
-    newPara.textContent = targetinput.value;
-    console.log(targetinput.value);
+    newPara.setAttribute("class", "para")
+    newPara.setAttribute("draggable" , "true")
+    newPara.textContent = valuee;
 
-    let inputval = targetinput.value;
-    targetDiv.appendChild(newPara);
-    let getForm = targetinput.parentElement;
-    getForm.reset();
-    let getValueHeading = targetDiv.children[0].children[0].children[0];
+    newPara.addEventListener("mousedown", (event) => {
+        woElementJoUthaHuaHy = event.target;
+        console.log(woElementJoUthaHuaHy);
+    });
 
-    
-    getValueHeading = getValueHeading.innerText;
 
-    savedTasks[getValueHeading].push(inputval);
-    console.log(targetinput);
-    localStorage.setItem("savedTasks" , JSON.stringify(savedTasks));
-    
 
-    return getValueHeading;
-}
+    return newPara;
+
+};
+
 
 let createCard = (value) => {
     const newCard = document.createElement("div");
@@ -131,14 +124,58 @@ let createCard = (value) => {
 
     if (!Array.isArray(savedTasks[h3Value])) {
         savedTasks[h3Value] = [];
-        savedTasks[h3Value].push();
+        // savedTasks[h3Value].push();
     }
-    // console.log(createPara());
 
     localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
 
 
-    submitBtn.addEventListener("click", createTicket);
+    newCard.addEventListener("dragleave", (event) => event.preventDefault());
+    newCard.addEventListener("dragover", (event) => event.preventDefault());
+
+
+
+    newCard.addEventListener("drop", (event) => {
+        const jisElementPerDropKiyaJaRahaHo = event.target;
+        console.log(jisElementPerDropKiyaJaRahaHo);
+
+        if (jisElementPerDropKiyaJaRahaHo.className.includes("card")) {
+            // console.log("2");
+            jisElementPerDropKiyaJaRahaHo.appendChild(woElementJoUthaHuaHy);
+        }
+
+        if (jisElementPerDropKiyaJaRahaHo.className.includes("para")) {
+            jisElementPerDropKiyaJaRahaHo.parentElement.appendChild(
+                woElementJoUthaHuaHy
+            );
+        }
+    });
+    // drag drop 
+
+
+
+    submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        let targetDiv = e.target.parentElement.parentElement;
+        let targetinput = e.target.parentElement.children[0];
+
+        let inputval = targetinput.value;
+        let getForm = targetinput.parentElement;
+        
+        getForm.reset();
+        let getValueHeading = targetDiv.children[0].children[0].children[0];
+        
+        
+        let createt = createTicket(inputval);
+        targetDiv.appendChild(createt)
+        
+
+        getValueHeading = getValueHeading.innerText;
+
+        savedTasks[getValueHeading].push(inputval);
+        localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
+    });
 
 
     deleteBtn.addEventListener("click", (e) => {
@@ -154,10 +191,6 @@ let createCard = (value) => {
 
 
 
-
-    // edit div value function
-    // edit div value function 
-    // edit div value function
 
     UpdateDiv.addEventListener("click", (e) => {
         e.preventDefault();
@@ -200,22 +233,23 @@ let createCard = (value) => {
         textAreaValue.remove();
         getValue.appendChild(form)
 
-        let updted1 = document.createElement("input");
-
         removeEle.remove();
     })
+    return newCard
+
 }
+
 for (const test in savedTasks) {
-    let showValue = savedTasks[test][0];
+    let showValue = savedTasks[test];
     let showHeading = test;
+    let card =  createCard(test);
 
-    createCard(showHeading, showValue);
+    for(const done of savedTasks[showHeading]){
+        let loging  = createTicket(done); 
+        card.appendChild(loging);
+
+        
+
+    }
 
 }
-
-for (const keyys of savedTasks[getValueHeading]){
-    createTicket();
-    console.log(keyys);
-}
-
-console.log(createTicket());
