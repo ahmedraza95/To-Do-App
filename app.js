@@ -2,7 +2,7 @@ let card = document.querySelectorAll(".card");
 let btn = document.querySelector(".button");
 let main = document.querySelector(".add");
 let form = document.querySelector(".form");
-let woElementJoUthaHuaHy = null;
+let selectedElementCursor = null;
 
 
 console.log("he");
@@ -41,8 +41,8 @@ let createTicket = (valuee) => {
     newPara.textContent = valuee;
 
     newPara.addEventListener("mousedown", (event) => {
-        woElementJoUthaHuaHy = event.target;
-        console.log(woElementJoUthaHuaHy);
+        selectedElementCursor = event.target;
+        console.log(selectedElementCursor);
     });
 
 
@@ -136,17 +136,17 @@ let createCard = (value) => {
 
 
     newCard.addEventListener("drop", (event) => {
-        const jisElementPerDropKiyaJaRahaHo = event.target;
-        console.log(jisElementPerDropKiyaJaRahaHo);
+        const targetDropDiv = event.target;
+        console.log(targetDropDiv);
 
-        if (jisElementPerDropKiyaJaRahaHo.className.includes("card")) {
+        if (targetDropDiv.className.includes("card")) {
             // console.log("2");
-            jisElementPerDropKiyaJaRahaHo.appendChild(woElementJoUthaHuaHy);
+            targetDropDiv.appendChild(selectedElementCursor);
         }
 
-        if (jisElementPerDropKiyaJaRahaHo.className.includes("para")) {
-            jisElementPerDropKiyaJaRahaHo.parentElement.appendChild(
-                woElementJoUthaHuaHy
+        if (targetDropDiv.className.includes("para")) {
+            targetDropDiv.parentElement.appendChild(
+                selectedElementCursor
             );
         }
     });
