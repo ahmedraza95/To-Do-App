@@ -42,11 +42,9 @@ let createTicket = (valuee) => {
 
     newPara.addEventListener("mousedown", (event) => {
         selectedElementCursor = event.target;
-        console.log(selectedElementCursor);
         let drop = selectedElementCursor.parentElement.children[0].children[0].children[0].innerText;
-        console.log(drop);
         savedTasks[drop].pop(selectedElementCursor.innerText);
-        localStorage.setItem("savetask" , JSON.stringify(savedTasks))
+        localStorage.setItem("savedTasks" , JSON.stringify(savedTasks))
         
     });
 
@@ -196,10 +194,14 @@ let createCard = (value) => {
         e.preventDefault();
         let news = e.target;
         let targetDiv = news.parentElement.parentElement.parentElement.parentElement;
+        let newDiv = e.target.parentElement.parentElement.parentElement.children[0].children[0].innerText;
+        console.log(newDiv);
         console.log(targetDiv);
         targetDiv.remove();
-        console.log(savedTasks["dsdsd"]);
-        localStorage.removeItem(`savedTasks["dsdsd"]`);
+        delete savedTasks[newDiv];
+        localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
+
+        
 
     })
 

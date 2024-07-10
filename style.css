@@ -3,8 +3,6 @@
   margin-top: 2%;
   width: 30%;
   border-radius: 20px;
-  /* overflow: scroll; */
-  /* justify-content: center; */
   align-items: cent;
   padding: 2%;
   display: flex;
@@ -19,7 +17,7 @@
 .add {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 9  0%;
   /* justify-content: space-between; */
 }
 
@@ -29,11 +27,11 @@
 }
 
 body {
-  /* width: 100%; */
+  width: 100%;
   /* height: 99vh; */
   display: flex;
   /* margin-left: ; */
-  /* justify-content: center; */
+  justify-content: center;
   background-color: black !important;
 }
 
@@ -241,7 +239,7 @@ p {
 }
 
 .collapse {
-  width: 90%;
+  width: 160%;
   display: flex;
   justify-content: center;
 }
@@ -249,7 +247,7 @@ p {
 .collapsing {
   /* display: flex; */
   justify-content: center !important;
-  width: 90%;
+  width: 160%;
   height: 10vh;
 }
 
