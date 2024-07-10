@@ -43,6 +43,11 @@ let createTicket = (valuee) => {
     newPara.addEventListener("mousedown", (event) => {
         selectedElementCursor = event.target;
         console.log(selectedElementCursor);
+        let drop = selectedElementCursor.parentElement.children[0].children[0].children[0].innerText;
+        console.log(drop);
+        savedTasks[drop].pop(selectedElementCursor.innerText);
+        localStorage.setItem("savetask" , JSON.stringify(savedTasks))
+        
     });
 
 
@@ -139,15 +144,24 @@ let createCard = (value) => {
         const targetDropDiv = event.target;
         console.log(targetDropDiv);
 
+
         if (targetDropDiv.className.includes("card")) {
-            // console.log("2");
             targetDropDiv.appendChild(selectedElementCursor);
+
+            let targeti = targetDropDiv.children[0].children[0].children[0].innerText;
+
+            savedTasks[targeti].push(selectedElementCursor.innerText);
+            localStorage.setItem("savedTasks" , JSON.stringify(savedTasks));
         }
 
         if (targetDropDiv.className.includes("para")) {
             targetDropDiv.parentElement.appendChild(
-                selectedElementCursor
-            );
+                selectedElementCursor);
+            let targeti = targetDropDiv.parentElement.children[0].children[0].children[0].innerText;
+            console.log(targeti);
+
+            savedTasks[targeti].push(selectedElementCursor.innerText);
+            localStorage.setItem("savedTasks", JSON.stringify(savedTasks));
         }
     });
     // drag drop 
